@@ -47,6 +47,7 @@ namespace TimeOffRequestSubmission.Repositories
         public async Task<List<Employee>> GetAllEmployees()
         {
             return await _context.Employees
+                .Include(x=>x.Roles)
                 .AsNoTracking()
                 .ToListAsync();
         }

@@ -29,10 +29,10 @@ namespace TimeOffRequestSubmission.Controllers
 
         [Authorize(Roles = Role.Manager)]
         [HttpGet("[Controller]/[Action]")]
-        public async Task<List<EmployeeTimeOffRequest>> GetAllTimeOffRequestsOfEmployeesUnderManager()
+        public async Task<List<EmployeeTimeOffRequest>> GetAllPendingTimeOffRequestsOfEmployeesUnderManager()
         {
             var managerId = int.Parse(User.Claims.First(x => x.Type == "employeeId").Value);
-            return await _timeOffHandlerService.GetAllTimeOffRequestsOfEmployeesUnderManager(managerId);
+            return await _timeOffHandlerService.GetAllPendingTimeOffRequestsOfEmployeesUnderManager(managerId);
         }
         
         [Authorize(Roles = Role.Manager)]

@@ -9,7 +9,7 @@ namespace TimeOffRequestSubmission.Repositories
     public interface ITimeOffRequestRepository
     {
         Task CreateRequest(TimeoffRequest timeOffRequest);
-        Task<ICollection<TimeoffRequest>> GetAllTimeOffRequestsOfEmployeesUnderManager(int managerId);
+        Task<ICollection<TimeoffRequest>> GetAllPendingTimeOffRequestsOfEmployeesUnderManager(int managerId);
         Task<TimeoffRequest> GetTimeOffRequestByIdAndEmployeeId(int timeOffRequestId, int employeeId);
         Task ApproveRequest(int timeOffRequestId, EApprovalStatus approved);
         Task RejectRequest(int timeOffRequestId, EApprovalStatus denied);

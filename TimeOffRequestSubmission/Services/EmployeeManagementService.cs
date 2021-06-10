@@ -23,7 +23,8 @@ namespace TimeOffRequestSubmission.Services
                 Id = x.Id,
                 FirstName = x.FirstName,
                 LastName = x.LastName,
-                Email = x.Email
+                Email = x.Email,
+                Role = x.Roles.Name
             }).ToList();
         }
 

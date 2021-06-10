@@ -7,7 +7,7 @@ namespace TimeOffRequestSubmission.Services
     public interface ITimeOffHandlerService
     {
         Task CreateRequest(int employeeId, TimeOffRequest timeOffRequest);
-        Task<List<EmployeeTimeOffRequest>> GetAllTimeOffRequestsOfEmployeesUnderManager(int managerId);
+        Task<List<EmployeeTimeOffRequest>> GetAllPendingTimeOffRequestsOfEmployeesUnderManager(int managerId);
         Task ApproveRequest(int timeOffRequestId, int employeeId);
         Task RejectRequest(int timeOffRequestId, int employeeId, string reason);
     }

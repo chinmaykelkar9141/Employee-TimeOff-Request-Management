@@ -22,15 +22,13 @@ namespace TimeOffRequestSubmission.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<ICollection<TimeoffRequest>> GetAllTimeOffRequestsOfEmployeesUnderManager(int managerId)
+        public async Task<ICollection<TimeoffRequest>> GetAllPendingTimeOffRequestsOfEmployeesUnderManager(int managerId)
         {
-            return await _context.Employees
+            return await _context.TimeoffRequests
                 .AsNoTracking()
-                .Include(e => e.TimeOffRequests)
-                .ThenInclude(t=>t.Employee)
-                .Where(e => e.ManagerId == managerId)
-                .Select(e => e.TimeOffRequests)
-                .FirstOrDefaultAsync();
+                .Include(x => x.Employee)
+                .Where(x => x.Employee.ManagerId == managerId && x.ApprovalStatus == EApprovalStatus.Pending)
+                .ToListAsync();
         }
 
         public async Task<TimeoffRequest> GetTimeOffRequestByIdAndEmployeeId(int timeOffRequestId, int employeeId)

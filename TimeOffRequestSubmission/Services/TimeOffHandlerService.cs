@@ -74,10 +74,10 @@ namespace TimeOffRequestSubmission.Services
             }
         }
 
-        public async Task<List<EmployeeTimeOffRequest>> GetAllTimeOffRequestsOfEmployeesUnderManager(int managerId)
+        public async Task<List<EmployeeTimeOffRequest>> GetAllPendingTimeOffRequestsOfEmployeesUnderManager(int managerId)
         {
             var timeOffRequestsDto =
-                await _timeOffRequestRepository.GetAllTimeOffRequestsOfEmployeesUnderManager(managerId);
+                await _timeOffRequestRepository.GetAllPendingTimeOffRequestsOfEmployeesUnderManager(managerId);
             return timeOffRequestsDto.Select(x => new EmployeeTimeOffRequest
             {
                 TimeOffRequestId = x.Id,
