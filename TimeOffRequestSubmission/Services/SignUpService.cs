@@ -32,7 +32,7 @@ namespace TimeOffRequestSubmission.Services
             var rolesId = await _roleRepository.GetRoleIdByRoleName(signUpRequest.Role);
             if (rolesId is null)
             {
-                throw new Exception("Provided role is not present in the system");
+                throw new Exception("Provided role is not present in the system");  
             }
 
             var newEmployee = new Employee

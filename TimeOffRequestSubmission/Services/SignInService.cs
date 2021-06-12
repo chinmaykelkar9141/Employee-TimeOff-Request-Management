@@ -50,7 +50,7 @@ namespace TimeOffRequestSubmission.Services
             {
                 Subject = new ClaimsIdentity(new Claim[]
                     {new("employeeId", existingEmployee.Id.ToString()), new(ClaimTypes.Role, existingEmployee.Roles.Name)}),
-                Expires = DateTime.UtcNow.AddDays(7),
+                Expires = DateTime.UtcNow.AddDays(30),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);

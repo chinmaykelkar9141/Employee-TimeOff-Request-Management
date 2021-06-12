@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  web:
+    build: .
+    ports:
+      - "80:80"
+    depends_on:
+      - sqlserver
+  sqlserver:
+    image: "mcr.microsoft.com/mssql/server:2017-latest-ubuntu"
+    environment:
+      SA_PASSWORD: "TestP@ssw0rd"
+      ACCEPT_EULA: "Y"
+    ports:
+    - "1433:1433"
