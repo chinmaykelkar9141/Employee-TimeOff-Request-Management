@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using TimeOffRequestSubmission.Repositories;
@@ -76,6 +75,7 @@ namespace TimeOffRequestSubmission
             
             var key = Encoding.ASCII.GetBytes(_configuration.GetValue<string>("Secret"));
             
+            //authorization middleware
             services.AddAuthentication(x =>
                 {
                     x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

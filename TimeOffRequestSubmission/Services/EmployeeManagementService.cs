@@ -15,6 +15,8 @@ namespace TimeOffRequestSubmission.Services
         {
             _employeeRepository = employeeRepository;
         }
+        
+        //function to get all employees. accessible only by system admin
         public async Task<List<EmployeeResponse>> GetAllEmployees()
         {
             var employeeDto = await _employeeRepository.GetAllEmployees();
@@ -28,6 +30,7 @@ namespace TimeOffRequestSubmission.Services
             }).ToList();
         }
 
+        // function to add manager to employee
         public async Task AddManager(int employeeId, int managerId)
         {
             var employee = await _employeeRepository.GetEmployeeById(employeeId);

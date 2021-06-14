@@ -15,6 +15,8 @@ namespace TimeOffRequestSubmission.Services
         {
             _mailSettings = mailSettings.Value;
         }
+        
+        // send email
         public async Task SendAsync(EmailRequest emailRequest)
         {
             var email = new MimeMessage

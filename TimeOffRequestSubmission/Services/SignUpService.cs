@@ -18,6 +18,7 @@ namespace TimeOffRequestSubmission.Services
             _roleRepository = roleRepository;
         }
         
+        // register in the system
           public async Task SignUp(SignUp signUpRequest)
         {
             Validate(signUpRequest);
@@ -30,7 +31,7 @@ namespace TimeOffRequestSubmission.Services
             }
             
             var rolesId = await _roleRepository.GetRoleIdByRoleName(signUpRequest.Role);
-            if (rolesId is null)
+            if (rolesId is null) // if role is not in three specified roles, throw exception
             {
                 throw new Exception("Provided role is not present in the system");  
             }

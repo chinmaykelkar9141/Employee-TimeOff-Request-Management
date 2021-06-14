@@ -90,6 +90,7 @@ namespace TimeOffRequestSubmission.Services
             }).ToList();
         }
 
+        //approve employee request
         public async Task ApproveRequest(int timeOffRequestId, int employeeId)
         {
             var timeOffRequest =
@@ -117,6 +118,7 @@ namespace TimeOffRequestSubmission.Services
             await _emailService.SendAsync(emailRequest);
         }
 
+        // reject employee request
         public async Task RejectRequest(int timeOffRequestId, int employeeId, string reason)
         {
             if (string.IsNullOrEmpty(reason))
